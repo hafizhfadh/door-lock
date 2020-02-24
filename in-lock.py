@@ -16,7 +16,7 @@ while True:
     # To play back the stored .wav file and to dump the std errors to /dev/null
     cmd_end = ' | aplay /home/pi/Desktop/Text.wav  2>/dev/null'
     cmd_out = '--stdout > /home/pi/Desktop/Text.wav '  # To store the voice file
-   if response['status']:
+    if response['status']:
         print('Akses diterima ! %s' % response['message'])
         call([cmd_beg+cmd_out+"Access_Granted"+cmd_end], shell=True)
     else:
