@@ -25,11 +25,13 @@ while True:
             GPIO.output(CONTROL_PIN, False)
             time.sleep(10)
             GPIO.output(CONTROL_PIN, True)
+            GPIO.cleanup()
         else:
             print('Akses ditolak ! %s' % response['message'])
             # file = "denied.mp3"
             # os.system("mpg123 " + file)
             GPIO.output(CONTROL_PIN, True)
+            GPIO.cleanup()
         GPIO.cleanup()
     except KeyboardInterrupt:
         GPIO.output(CONTROL_PIN, True)
