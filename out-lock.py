@@ -47,7 +47,7 @@ while True:
             # file = "granted.mp3"
             # os.system("mpg123 " + file)
             relay_manual("off")
-            time.sleep(10)
+            time.sleep(15)
         else:
             print('Akses ditolak ! %s' % response['message'])
             # file = "denied.mp3"
