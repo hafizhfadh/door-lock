@@ -1,8 +1,8 @@
 #!/bin/bash
 
-sudo apt-get update && sudo apt-get upgrade
+sudo apt-get update -y && sudo apt-get upgrade -y
 
-sudo apt-get install build-essential python3 python3-pip python3-dev
+sudo apt-get install -y build-essential python3 python3-pip python3-dev
 
 pip3 install request
 
