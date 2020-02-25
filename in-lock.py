@@ -6,7 +6,7 @@ import sys
 
 while True:
     GPIO.setmode(GPIO.BCM)
-    pin.DOOR_SENSOR_PIN = 12
+    DOOR_SENSOR_PIN = 12
     URL = "http://api.wibs.sch.id//v2/dorm/post/outin.update-timestamp"
     rfid = input("Please insert RFID : ")
     data = {
