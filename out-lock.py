@@ -4,7 +4,7 @@ import RPi.GPIO as GPIO
 
 while True:
     try:
-        CONTROL_PIN = 12
+        CONTROL_PIN = 18
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(CONTROL_PIN, GPIO.OUT)
         GPIO.output(CONTROL_PIN, True)
