@@ -11,13 +11,11 @@ def setDoorStatus(status, response):
         GPIO.output(CONTROL_PIN, False)
         time.sleep(10)
         GPIO.output(CONTROL_PIN, True)
-        GPIO.cleanup()
     else:
         print('Akses ditolak ! %s' % response['message'])
         # file = "denied.mp3"
         # os.system("mpg123 " + file)
         GPIO.output(CONTROL_PIN, True)
-        GPIO.cleanup()
 
 def sendData(rfid):
     URL = "http://api.wibs.sch.id//v2/dorm/post/outin.update-timestamp"
@@ -38,6 +36,7 @@ while True:
         GPIO.output(CONTROL_PIN, True)
         rfid = input("Please insert RFID : ")
         sendData(rfid = rfid)
+        GPIO.cleanup()
     finally:
         GPIO.output(CONTROL_PIN, True)
         GPIO.cleanup()
