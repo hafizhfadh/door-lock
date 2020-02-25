@@ -31,6 +31,8 @@ while True:
             # file = "denied.mp3"
             # os.system("mpg123 " + file)
             GPIO.output(CONTROL_PIN, False)
+            time.sleep(10)
+            GPIO.output(CONTROL_PIN, True)
             GPIO.cleanup()
     finally:
         GPIO.cleanup()
