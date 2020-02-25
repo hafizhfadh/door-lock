@@ -35,8 +35,8 @@ def sendData(rfid):
     setDoorStatus(status = response['status'], response = response)
 
 while True:
-    GPIO.output(CONTROL_PIN, True)
     try:
+        GPIO.output(CONTROL_PIN, True)
         rfid = input("Please insert RFID : ")
         sendData(rfid = rfid)
     finally:
