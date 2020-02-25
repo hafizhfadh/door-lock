@@ -3,10 +3,6 @@ import os
 import RPi.GPIO as GPIO
 import time
 
-CONTROL_PIN = 18
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(CONTROL_PIN, GPIO.OUT)
-
 def setDoorStatus(status, response):
     if status:
         print('Akses diterima ! %s' % response['message'])
@@ -36,6 +32,9 @@ def sendData(rfid):
 
 while True:
     try:
+        CONTROL_PIN = 18
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(CONTROL_PIN, GPIO.OUT)
         GPIO.output(CONTROL_PIN, True)
         rfid = input("Please insert RFID : ")
         sendData(rfid = rfid)
