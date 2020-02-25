@@ -16,10 +16,6 @@ def relay_manual(action):
         GPIO.setup(GPIO_CONTROL, GPIO.OUT)
         #Starting the relay
         GPIO.output(GPIO_CONTROL, True)
-        #Logging the event
-        logging.basicConfig(format='%(asctime)s %(message)s',
-                            filename='/home/pi/logging/events.log', level=logging.INFO)
-        logging.info('Relay has been manually switched on, from in-lock.py')
     elif action == "off":
         try:
             #Stopping the relay
@@ -31,10 +27,6 @@ def relay_manual(action):
             GPIO.setup(GPIO_CONTROL, GPIO.OUT)
             #Starting the relay
             GPIO.output(GPIO_CONTROL, False)
-        #Logging the event
-        logging.basicConfig(format='%(asctime)s %(message)s',
-                            filename='/home/pi/logging/events.log', level=logging.INFO)
-        logging.info('Relay has been manually switched off, from in-lock.py')
         #Cleanup
         GPIO.cleanup()
 
