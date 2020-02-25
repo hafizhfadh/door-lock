@@ -3,6 +3,7 @@ import os
 import RPi.GPIO as GPIO
 
 while True:
+    GPIO.cleanup()
     CONTROL_PIN = 12
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(CONTROL_PIN, GPIO.OUT)
@@ -28,3 +29,4 @@ while True:
         # os.system("mpg123 " + file)
         GPIO.output(CONTROL_PIN, True)
         GPIO.cleanup()
+    GPIO.cleanup()
