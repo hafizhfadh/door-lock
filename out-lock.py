@@ -3,9 +3,9 @@ import os
 import RPi.GPIO as GPIO
 
 while True:
-    GPIO.cleanup()
     CONTROL_PIN = 12
     GPIO.setmode(GPIO.BCM)
+    GPIO.cleanup()
     GPIO.setup(CONTROL_PIN, GPIO.OUT)
     GPIO.output(CONTROL_PIN, True)
     URL = "http://api.wibs.sch.id//v2/dorm/post/outin.update-timestamp"
