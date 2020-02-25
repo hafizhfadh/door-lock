@@ -21,13 +21,13 @@ while True:
             print('Akses diterima ! %s' % response['message'])
             # file = "granted.mp3"
             # os.system("mpg123 " + file)
-            GPIO.output(CONTROL_PIN, False)
+            GPIO.output(CONTROL_PIN, True)
             GPIO.cleanup()
         else:
             print('Akses ditolak ! %s' % response['message'])
             # file = "denied.mp3"
             # os.system("mpg123 " + file)
-            GPIO.output(CONTROL_PIN, True)
+            GPIO.output(CONTROL_PIN, False)
             GPIO.cleanup()
     finally:
         GPIO.cleanup()
