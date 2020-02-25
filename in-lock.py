@@ -13,6 +13,8 @@ def setDoorStatus(status, response):
         # file = "granted.mp3"
         # os.system("mpg123 " + file)
         GPIO.output(CONTROL_PIN, False)
+        time.sleep(10)
+        GPIO.output(CONTROL_PIN, True)
         GPIO.cleanup()
     else:
         print('Akses ditolak ! %s' % response['message'])
@@ -33,9 +35,8 @@ def sendData(rfid):
     setDoorStatus(status = response['status'], response = response)
 
 while True:
+    GPIO.output(CONTROL_PIN, True)
     try:
-        time.sleep(10)
-        GPIO.output(CONTROL_PIN, True)
         rfid = input("Please insert RFID : ")
         sendData(rfid = rfid)
     finally:
