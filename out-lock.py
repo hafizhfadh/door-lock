@@ -27,6 +27,7 @@ def relay_manual(action):
             GPIO.setup(GPIO_CONTROL, GPIO.OUT)
             #Starting the relay
             GPIO.output(GPIO_CONTROL, False)
+        time.sleep(5)
         #Cleanup
         GPIO.cleanup()
 
@@ -45,7 +46,6 @@ def send_data(rfid):
         # file = "granted.mp3"
         # os.system("mpg123 " + file)
         relay_manual("off")
-        time.sleep(5)
     else:
         print('Akses ditolak ! %s' % response['message'])
         # file = "denied.mp3"
