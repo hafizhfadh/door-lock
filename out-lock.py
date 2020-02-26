@@ -27,7 +27,7 @@ def relay_manual(action):
             # Set CONTROL to OUTPUT mode
             GPIO.setup(GPIO_CONTROL, GPIO.OUT)
             #Starting the relay
-            GPIO.output(GPIO_CONTROL, False)
+            GPIO.output(GPIO_CONTROL, True)
         #Cleanup
         GPIO.cleanup()
 
