@@ -2,7 +2,6 @@ import requests
 import os
 import RPi.GPIO as GPIO
 import time
-import logging
 
 #This function switches on the relay on or off and expects the argument 'on' or 'off'
 
@@ -20,6 +19,7 @@ def relay_manual(action):
         try:
             #Stopping the relay
             GPIO.output(GPIO_CONTROL, False)
+            time.sleep(10)
         except:
             # We will be using the BCM GPIO numbering
             GPIO.setmode(GPIO.BCM)
@@ -47,7 +47,6 @@ while True:
             # file = "granted.mp3"
             # os.system("mpg123 " + file)
             relay_manual("off")
-            time.sleep(10)
         else:
             print('Akses ditolak ! %s' % response['message'])
             # file = "denied.mp3"
