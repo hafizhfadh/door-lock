@@ -5,6 +5,7 @@ import time
 
 #This function switches on the relay on or off and expects the argument 'on' or 'off'
 
+
 def relay_manual(action):
     # Selecting which GPIO to target
     GPIO_CONTROL = 18
@@ -19,7 +20,7 @@ def relay_manual(action):
         try:
             #Stopping the relay
             GPIO.output(GPIO_CONTROL, False)
-            time.sleep(10)
+            time.sleep(5)
         except:
             # We will be using the BCM GPIO numbering
             GPIO.setmode(GPIO.BCM)
@@ -30,28 +31,32 @@ def relay_manual(action):
         #Cleanup
         GPIO.cleanup()
 
+
+def send_data(rfid):
+    URL = "http://api.wibs.sch.id//v2/dorm/post/outin.update-timestamp"
+    data = {
+        'student_rfid': rfid,
+        'type': 'out'
+    }
+    r = requests.post(url=URL, data=data, headers={
+        "Application-Token": "geSzgVahOlowulcgHEtQmu9Ybofk1lRnPFd3V5atSEu1SD1dt2"})
+    response = r.json()
+    if response['status']:
+        print('Akses diterima ! %s' % response['message'])
+        # file = "granted.mp3"
+        # os.system("mpg123 " + file)
+        relay_manual("off")
+    else:
+        print('Akses ditolak ! %s' % response['message'])
+        # file = "denied.mp3"
+        # os.system("mpg123 " + file)
+        relay_manual("on")
+
+
 while True:
     try:
-        relay_manual("on")
-        URL = "http://api.wibs.sch.id//v2/dorm/post/outin.update-timestamp"
         rfid = input("Please insert RFID : ")
-        data = {
-            'student_rfid': rfid,
-            'type': 'out'
-        }
-        r = requests.post(url=URL, data=data, headers={
-            "Application-Token": "geSzgVahOlowulcgHEtQmu9Ybofk1lRnPFd3V5atSEu1SD1dt2"})
-        response = r.json()
-        if response['status']:
-            print('Akses diterima ! %s' % response['message'])
-            # file = "granted.mp3"
-            # os.system("mpg123 " + file)
-            relay_manual("off")
-        else:
-            print('Akses ditolak ! %s' % response['message'])
-            # file = "denied.mp3"
-            # os.system("mpg123 " + file)
-            relay_manual("on")
-        GPIO.cleanup()
+        send_data(rfid)
+
     finally:
         GPIO.cleanup()
