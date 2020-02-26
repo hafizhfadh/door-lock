@@ -55,6 +55,7 @@ def send_data(rfid):
 
 while True:
     try:
+        relay_manual("on")
         rfid = input("Please insert RFID : ")
         send_data(rfid)
 
