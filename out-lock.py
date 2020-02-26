@@ -15,11 +15,11 @@ def relay_manual(action):
         # Set CONTROL to OUTPUT mode
         GPIO.setup(GPIO_CONTROL, GPIO.OUT)
         #Starting the relay
-        GPIO.output(GPIO_CONTROL, True)
+        GPIO.output(GPIO_CONTROL, False)
     elif action == "off":
         try:
             #Stopping the relay
-            GPIO.output(GPIO_CONTROL, False)
+            GPIO.output(GPIO_CONTROL, True)
             time.sleep(5)
         except:
             # We will be using the BCM GPIO numbering
@@ -27,7 +27,7 @@ def relay_manual(action):
             # Set CONTROL to OUTPUT mode
             GPIO.setup(GPIO_CONTROL, GPIO.OUT)
             #Starting the relay
-            GPIO.output(GPIO_CONTROL, True)
+            GPIO.output(GPIO_CONTROL, False)
         #Cleanup
         GPIO.cleanup()
 
