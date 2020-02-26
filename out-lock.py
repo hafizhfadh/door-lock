@@ -19,8 +19,7 @@ def relay_manual(action):
     elif action == "off":
         try:
             #Stopping the relay
-            GPIO.output(GPIO_CONTROL, False)
-            time.sleep(5)
+            GPIO.output(GPIO_CONTROL, True)
         except:
             # We will be using the BCM GPIO numbering
             GPIO.setmode(GPIO.BCM)
@@ -46,6 +45,7 @@ def send_data(rfid):
         # file = "granted.mp3"
         # os.system("mpg123 " + file)
         relay_manual("off")
+        time.sleep(5)
     else:
         print('Akses ditolak ! %s' % response['message'])
         # file = "denied.mp3"
