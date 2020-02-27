@@ -27,7 +27,6 @@ def relay_manual(action):
             GPIO.setup(GPIO_CONTROL, GPIO.OUT)
             #Starting the relay
             GPIO.output(GPIO_CONTROL, False)
-        time.sleep(5)
         #Cleanup
         GPIO.cleanup()
 
